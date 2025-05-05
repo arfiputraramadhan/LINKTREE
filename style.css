@@ -9,7 +9,7 @@ body {
   font-family: 'Space Grotesk', serif;
   font-optical-sizing: auto;
   position: relative;
-  background-image: url("gunungjpg.jpg");
+  background-image: url(gunungjpg.jpg);
   background-size: cover;
   background-position: center;
 }
