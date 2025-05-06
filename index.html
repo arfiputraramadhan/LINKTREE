@@ -34,11 +34,36 @@
         </footer>
     </section>
 
-    <audio autoplay loop>
-        <source src="dj stecu.mp3" type="audio/mpeg">
+    <audio id="backgroundMusic" loop>
+        <source src="dj stecu.mp3" type="audio/mp3">
         Your browser does not support the audio element.
     </audio>
-    
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const bgMusic = document.getElementById('backgroundMusic');
+            let audioPlayed = false;
+
+            function playBackgroundMusic() {
+                if (!audioPlayed) {
+                    bgMusic.play().catch(error => {
+                        console.error("Gagal memutar audio:", error);
+                        // Anda mungkin ingin menampilkan pesan kepada pengguna di sini
+                    });
+                    audioPlayed = true;
+                }
+            }
+
+            // Tambahkan event listener ke berbagai interaksi pengguna
+            document.addEventListener('click', playBackgroundMusic);
+            document.addEventListener('touchstart', playBackgroundMusic);
+            document.addEventListener('keydown', playBackgroundMusic);
+            document.addEventListener('scroll', playBackgroundMusic);
+
+            // Anda juga bisa mencoba memutar saat mouse bergerak (mungkin kurang ideal)
+            // document.addEventListener('mousemove', playBackgroundMusic);
+        });
+    </script>
 </body>
 
 </html>
