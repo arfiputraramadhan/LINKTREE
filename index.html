@@ -29,7 +29,7 @@
             <a href="https://www.tiktok.com/@orang.sukses767?_t=ZS-8vym5essUm0&_r=1"><i class="fa-brands fa-tiktok"></i> tiktok</a>
         </main>
         <footer>
-            <p> 💖💖  BY    <a href="">Arfi Putra Ramadhan</a></p>
+            <p>  BY    <a href="">Arfi Putra Ramadhan</a></p>
         </footer>
     </section>
 
@@ -38,31 +38,24 @@
         Your browser does not support the audio element.
     </audio>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const bgMusic = document.getElementById('backgroundMusic');
-            let audioPlayed = false;
+    <audio id="bgm" src="lagu.mp3" loop></audio>
 
-            function playBackgroundMusic() {
-                if (!audioPlayed) {
-                    bgMusic.play().catch(error => {
-                        console.error("Gagal memutar audio:", error);
-                        // Anda mungkin ingin menampilkan pesan kepada pengguna di sini
-                    });
-                    audioPlayed = true;
-                }
-            }
+<script>
+  const audio = document.getElementById("bgm");
 
-            // Tambahkan event listener ke berbagai interaksi pengguna
-            document.addEventListener('click', playBackgroundMusic);
-            document.addEventListener('touchstart', playBackgroundMusic);
-            document.addEventListener('keydown', playBackgroundMusic);
-            document.addEventListener('scroll', playBackgroundMusic);
+  // Fungsi untuk memutar musik sekali saja
+  function startMusic() {
+    audio.play();
+    document.removeEventListener("click", startMusic);
+    document.removeEventListener("touchstart", startMusic);
+    document.removeEventListener("scroll", startMusic);
+  }
 
-            // Anda juga bisa mencoba memutar saat mouse bergerak (mungkin kurang ideal)
-            // document.addEventListener('mousemove', playBackgroundMusic);
-        });
-    </script>
+  // Dengarkan interaksi pertama
+  document.addEventListener("click", startMusic);
+  document.addEventListener("touchstart", startMusic);
+  document.addEventListener("scroll", startMusic);
+</script>
 </body>
 
 </html>
