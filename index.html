@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Linktree</title>
+    <title>Arfi Putra Ramadhan - Linktree</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
@@ -12,53 +12,134 @@
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style.css">
-    <style>
-        audio {
-            display: none; /* Menyembunyikan pemutar audio */
-        }
-    </style>
 </head>
 
 <body>
+    <!-- Background dengan efek parallax -->
+    <div class="parallax-bg"></div>
+    <div class="overlay"></div>
+    
+    <!-- Floating particles untuk efek dekoratif -->
+    <div class="particles-container">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+    
+    <!-- Loading screen -->
+    <div class="loading-screen">
+        <div class="loader">
+            <div class="loader-circle"></div>
+            <p>Loading...</p>
+        </div>
+    </div>
+
+    <!-- Konten utama -->
     <section>
         <main>
-            <img src="jancok.jpg" alt="arfi putra Ramadhan">
-            <h2>Arfi Putra Ramadhan</h2>
-            <a href="https://wa.me/6287782738443?text=halo bang"><i class="fa-brands fa-whatsapp"></i> whatsapp</a>
-            <a href="https://open.spotify.com/playlist/1r6z9cUP7cZvVJGnDlSTQ3?si=csBt5jJqRUuYeZCC0lR0Nw%0A"><i class="fa-brands fa-spotify"></i>Spotify</a>
-            <a href="https://www.tiktok.com/@orang.sukses767?_t=ZS-8vym5essUm0&_r=1"><i class="fa-brands fa-tiktok"></i> tiktok</a>
-            <a href="https://www.instagram.com/arfiputra31254?igsh=MTB2eXN4Z2NybnZqMw=="><i class="fa-brands fa-instagram"></i> instagram</a>
-            <a href="https://open.spotify.com/playlist/3OIeMMkIACsG8jAAnXi7y0?si=UttxXbS8QuOY_MjCiKl--g"><i class="fa-brands fa-spotify"></i> spotify hindia&feast</a>
-           
+            <div class="profile-img-container">
+                <img src="jancok.jpg" alt="Arfi Putra Ramadhan" class="profile-img">
+                <div class="profile-img-border"></div>
+            </div>
+            <h2 class="profile-name">Arfi Putra Ramadhan</h2>
+            <div class="links-container">
+                <a href="https://wa.me/62881010022751?text=halo bang" class="link-item">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    <span>WhatsApp</span>
+                </a>
+                <a href="https://open.spotify.com/playlist/1r6z9cUP7cZvVJGnDlSTQ3?si=csBt5jJqRUuYeZCC0lR0Nw%0A" class="link-item">
+                    <i class="fa-brands fa-spotify"></i>
+                    <span>Spotify</span>
+                </a>
+                <a href="https://www.tiktok.com/@orang.sukses767?_t=ZS-8vym5essUm0&_r=1" class="link-item">
+                    <i class="fa-brands fa-tiktok"></i>
+                    <span>TikTok</span>
+                </a>
+                <a href="https://www.instagram.com/arfiputra31254?igsh=MTB2eXN4Z2NybnZqMw==" class="link-item">
+                    <i class="fa-brands fa-instagram"></i>
+                    <span>Instagram</span>
+                </a>
+                <a href="https://open.spotify.com/playlist/3OIeMMkIACsG8jAAnXi7y0?si=UttxXbS8QuOY_MjCiKl--g" class="link-item">
+                    <i class="fa-brands fa-spotify"></i>
+                    <span>Spotify Hindia & Feast</span>
+                </a>
+            </div>
         </main>
         <footer>
-            <p>  BY    <a href="">Arfi Putra Ramadhan</a></p>
+            <p>BY <a href="">Arfi Putra Ramadhan</a></p>
         </footer>
     </section>
 
+    <!-- Audio untuk background music -->
     <audio id="backgroundMusic" loop>
         <source src="dj.mp3" type="audio/mp3">
         Your browser does not support the audio element.
     </audio>
 
-    <audio id="bgm" src="dj.mp3" loop></audio>
+    <script>
+        // Animasi loading screen
+        window.addEventListener('load', function() {
+            const loadingScreen = document.querySelector('.loading-screen');
+            setTimeout(() => {
+                loadingScreen.style.opacity = '0';
+                setTimeout(() => {
+                    loadingScreen.style.display = 'none';
+                }, 500);
+            }, 1500);
+        });
 
-<script>
-  const audio = document.getElementById("bgm");
+        // Efek parallax pada background
+        document.addEventListener('mousemove', function(e) {
+            const parallaxBg = document.querySelector('.parallax-bg');
+            const x = (window.innerWidth - e.pageX * 2) / 100;
+            const y = (window.innerHeight - e.pageY * 2) / 100;
+            parallaxBg.style.transform = `translateX(${x}px) translateY(${y}px) scale(1.1)`;
+        });
 
-  // Fungsi untuk memutar musik sekali saja
-  function startMusic() {
-    audio.play();
-    document.removeEventListener("click", startMusic);
-    document.removeEventListener("touchstart", startMusic);
-    document.removeEventListener("scroll", startMusic);
-  }
+        // Animasi untuk link items
+        const linkItems = document.querySelectorAll('.link-item');
+        linkItems.forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px) scale(1.02)';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
 
-  // Dengarkan interaksi pertama
-  document.addEventListener("click", startMusic);
-  document.addEventListener("touchstart", startMusic);
-  document.addEventListener("scroll", startMusic);
-</script>
+        // Animasi untuk profile image
+        const profileImg = document.querySelector('.profile-img');
+        profileImg.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.05) rotate(5deg)';
+        });
+        
+        profileImg.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1) rotate(0)';
+        });
+
+        // Background music dengan interaksi pengguna
+        const audio = document.getElementById("backgroundMusic");
+        let musicStarted = false;
+
+        function startMusic() {
+            if (!musicStarted) {
+                audio.volume = 0.5;
+                audio.play().catch(e => console.log("Autoplay prevented:", e));
+                musicStarted = true;
+                document.removeEventListener("click", startMusic);
+                document.removeEventListener("touchstart", startMusic);
+            }
+        }
+
+        document.addEventListener("click", startMusic);
+        document.addEventListener("touchstart", startMusic);
+    </script>
 </body>
 
 </html>
